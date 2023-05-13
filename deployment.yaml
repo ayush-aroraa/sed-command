@@ -20,7 +20,7 @@ spec:
       #- name: bodyshop-dev
       containers:
       - name: user-service
-        image: 718140854052.dkr.ecr.ap-south-1.amazonaws.com/dev-user-poc:api-user-14
+        image: 718140854052.dkr.ecr.ap-south-1.amazonaws.com/dev-user-poc:api-user-300
         imagePullPolicy: Always
         ports:
         - containerPort: 8001

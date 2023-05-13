@@ -1,43 +1,36 @@
 apiVersion: apps/v1
 kind: "Deployment"
 metadata:
-  name: auth-service
+  name: user-service
   labels:
-    app: auth-service
-  namespace: pre-prod
+    app: user-service
+  namespace: dev
 spec:
   replicas: 1
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 4
   selector:
     matchLabels:
-      app: auth-service
+      app: user-service
   template:
     metadata:
       labels:
-        app: auth-service
+        app: user-service
     spec:
+      #imagePullSecrets:
+      #- name: bodyshop-dev
       containers:
-        - name: auth-service
-          image: 718140854052.dkr.ecr.ap-south-1.amazonaws.com/dev-user-poc:api-user-14
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 5001
-              name: auth-service
-            - containerPort: 9001
-              name: auth-grpc
-          resources:
-            limits:
-              cpu: "500m"
-              memory: "1Gi"
-            requests:
-              cpu: "125m"
-              memory: "250Mi"
-          volumeMounts:
-            - name: env
-              mountPath: /usr/src/app/.env
-              subPath: .env
-              readOnly: true
-      volumes:
-        - name: env
-          secret:
-            secretName: auth-secret
+      - name: user-service
+        image: 718140854052.dkr.ecr.ap-south-1.amazonaws.com/dev-user-poc:api-user-14
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8001
+          name: user-service
+        - containerPort: 4001
+          name: user-grpc
+        resources:
+          limits:
+            cpu: "150m"
+            memory: "250Mi"
+          requests:
+            cpu: "150m"
+            memory: "250Mi"

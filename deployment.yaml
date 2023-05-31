@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: "Deployment"
 metadata:
-  name: user-servicee
+  name: user-serviceee
+  
   labels:
     app: user-service
   namespace: dev

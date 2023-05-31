@@ -3,7 +3,7 @@ kind: "Deployment"
 metadata:
   name: user-service
   labels:
-    app: user-service
+    app: user-servicee
   namespace: dev
 spec:
   replicas: 1

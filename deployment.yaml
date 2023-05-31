@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: "Deployment"
 metadata:
-  name: user-servic
+  name: user-service
   
   labels:
     app: user-service

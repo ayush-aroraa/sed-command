@@ -18,9 +18,9 @@ spec:
     spec:
       containers:
       - name: backend-svc
-        image: nginx:1.25.1
+        image: argoproj/rollouts-demo:blue
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources:
           limits:
             cpu: "151m"

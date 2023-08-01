@@ -1,34 +1,26 @@
 apiVersion: apps/v11
 kind: "Deployment"
 metadata:
-  name: user-serviceeeeeeeeeeeeeeeeeeeeeeeeeee
-  
-  
+  name: backend-svc
   labels:
-    app: user-service
-  namespace: dev
+    app: backend-svc
+  namespace: test
 spec:
-  replicas: 111
-  revisionHistoryLimit: 4
+  replicas: 1
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: user-service
+      app: backend-svc
   template:
     metadata:
       labels:
-        app: user-service
+        app: backend-svc
     spec:
-      #imagePullSecrets:
-      #- name: bodyshop-dev
       containers:
-      - name: user-service
-        image: 718140854052.dkr.ecr.ap-south-1.amazonaws.com/dev-user-poc:api-user-300
-        imagePullPolicy: Always
+      - name: backend-svc
+        image: nginx:1.14.2
         ports:
-        - containerPort: 8001
-          name: user-service
-        - containerPort: 4001
-          name: user-grpc
+        - containerPort: 80
         resources:
           limits:
             cpu: "150m"
